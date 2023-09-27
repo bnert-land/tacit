@@ -1,0 +1,4 @@
+{:paths ["src"]
+ :aliases
+ {:dev {:extra-paths ["dev"]}}}
+

@@ -1,0 +1,1 @@
+{:lint-as {tacit.core/virtual-let clojure.core/let}}

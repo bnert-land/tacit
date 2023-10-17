@@ -14,8 +14,8 @@
            ^java.util.concurrent.Callable f))
 
 (defmacro virtual-let [bindings & body]
-  `(virtual-call (fn* [] (let ~bindings ~@body))))
+  `(tacit.core/virtual-call (fn* [] (let ~bindings ~@body))))
 
 (defmacro virtual [& body]
-  `(virtual-let [] ~@body))
+  `(tacit.core/virtual-let [] ~@body))
 

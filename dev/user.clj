@@ -4,16 +4,15 @@
   (require '[tacit.core :as t] :reload)
   (require '[clojure.edn :as edn])
 
-  (-> 
+  (deref
     (t/virtual
       (println "hi")
-      100)
-    deref)
+      100))
 
-  (->
+  (deref
     (t/virtual-let [value "{:msg \"hello\"}"]
-      (edn/read-string value))
-    deref)
+      (Thread/sleep 1000)
+      (edn/read-string value)))
 
 
   (require 'tacit.async :reload)

@@ -1,5 +1,6 @@
 {:paths ["src"]
+ :deps {org.clojure/core.async {:mvn/version "1.6.681"}}
  :aliases
- {:dev {:extra-paths ["dev"]}
-  :async {:extra-deps {org.clojure/core.async {:mvn/version "1.6.681"}}}}}
+ {:dev {:extra-paths ["dev"]}}}
+
 

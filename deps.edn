@@ -6,4 +6,9 @@
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/core.async {:mvn/version "1.6.681"}
                       lambdaisland/kaocha {:mvn/version "1.87.1366"}}
-         :main-opts  ["-m" "kaocha.runner"]}}}
+         :main-opts  ["-m" "kaocha.runner"]}
+  :build
+  {:replace-deps {io.github.clojure/tools.build {:mvn/version "0.9.6"}
+                  land.bnert/publicize {:mvn/version "0.4.0"}}
+   :ns-default   build}}}
+

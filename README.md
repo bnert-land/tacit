@@ -1,5 +1,7 @@
 # virtual
 
+[![Clojars Project](https://img.shields.io/clojars/v/land.bnert/virtual.svg)](https://clojars.org/land.bnert/virtual)
+
 Java 21 Virtual Thread Utilities
 
 ## Motivation

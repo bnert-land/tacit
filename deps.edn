@@ -1,6 +1,9 @@
 {:paths ["src"]
- :deps {org.clojure/core.async {:mvn/version "1.6.681"}}
+ :deps {}
  :aliases
- {:dev {:extra-paths ["dev"]}}}
-
-
+ {:dev  {:extra-deps  {org.clojure/core.async {:mvn/version "1.6.681"}}
+         :extra-paths ["dev"]}
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/core.async {:mvn/version "1.6.681"}
+                      lambdaisland/kaocha {:mvn/version "1.87.1366"}}
+         :main-opts  ["-m" "kaocha.runner"]}}}

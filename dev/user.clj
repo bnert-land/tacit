@@ -1,32 +1,39 @@
 (ns user)
 
 (comment
-  (require '[tacit.core :as t] :reload)
+  (require '[virtual.core :as v] :reload)
   (require '[clojure.edn :as edn])
 
   (deref
-    (t/virtual
+    (v/virtual
       (println "hi")
       100))
 
   (deref
-    (t/virtual-let [value "{:msg \"hello\"}"]
+    (v/virtual-let [value "{:msg \"hello\"}"]
       (Thread/sleep 1000)
       (edn/read-string value)))
 
 
-  (require 'tacit.async :reload)
-  (tacit.async/use-virtual-thread-executor!)
+  (require 'virtual.async :reload)
+  (virtual.async/use-virtual-thread-executor!)
 
-  (require '[clojure.core.async :refer [chan put! poll! go go-loop >! <!]])
+  (require '[clojure.core.async
+             :refer [chan put! go-loop <!]])
 
   (def c (chan))
 
-  (dotimes [i 1000]
-    (put! c {:value i}))
+  (do
+    (dotimes [i 1000]
+      (put! c {:value i}))
+    ; signal to stop loop
+    (put! c {}))
 
   (go-loop []
-    (let [v? (<! c)]
-      (println "V?>" v?)
-      (recur)))
+    (let [v? (<! c)
+          t  (Thread/currentThread)]
+      ; Should print: "VirtualThreads> {...}"
+      (println (str (.getName (.getThreadGroup t)) ">") v?)
+      (when (:value v?)
+      (recur))))
 )

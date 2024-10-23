@@ -3,9 +3,6 @@
     java.util.concurrent.Executors))
 
 (set! *warn-on-reflection* true)
-(assert (= "21" (System/getProperty "java.specification.version"))
-        "Library only usable with Java 21 or greater")
-
 
 (def async?
   (try

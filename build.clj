@@ -5,7 +5,7 @@
 
 ; 
 (def lib 'land.bnert/virtual)
-(def version "0.1.0")
+(def version "0.2.0")
 
 ; -- build stuff
 (def basis
